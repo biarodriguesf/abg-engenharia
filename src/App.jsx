@@ -266,7 +266,7 @@ function Icon({ name, size = 24 }) {
 function App() {
   useEffect(() => {
     const elements = document.querySelectorAll(
-      ".services-grid .service-card, .process-grid .process-card"
+      ".services-grid .service-card, .process-grid .process-card, .services-section .section-heading > div, .services-section .section-heading > p, .process-section > .container > .section-topline, .process-section .process-heading > *"
     );
 
     if (!("IntersectionObserver" in window)) {
@@ -287,7 +287,11 @@ function App() {
     );
 
     elements.forEach((element, index) => {
-      element.style.setProperty("--reveal-delay", `${(index % 3) * 100}ms`);
+      const cardIndex = Array.from(
+        element.parentElement?.querySelectorAll(".service-card, .process-card") || []
+      ).indexOf(element);
+      const delay = cardIndex >= 0 ? (cardIndex % 4) * 105 : index * 70;
+      element.style.setProperty("--reveal-delay", `${Math.min(delay, 315)}ms`);
       element.classList.add("reveal-on-scroll");
       observer.observe(element);
     });
@@ -516,7 +520,7 @@ function App() {
         <section className="intro-section" id="sobre">
           <div className="container">
             <div className="section-topline">
-              <span>01</span>
+              <span></span>
               <span>Sobre a ABG</span>
             </div>
 
@@ -618,7 +622,7 @@ function App() {
             <div className="section-heading">
               <div>
                 <div className="section-topline light">
-                  <span>02</span>
+                  <span></span>
                   <span>Serviços</span>
                 </div>
 
@@ -704,7 +708,7 @@ function App() {
         <section className="process-section" id="processo">
           <div className="container">
             <div className="section-topline">
-              <span>03</span>
+              <span></span>
               <span>Como funciona</span>
             </div>
 
@@ -790,7 +794,7 @@ function App() {
             <div className="faq-grid">
               <div className="faq-intro">
                 <div className="section-topline">
-                  <span>04</span>
+                  <span></span>
                   <span>Tire suas dúvidas</span>
                 </div>
 
@@ -848,7 +852,7 @@ function App() {
             <div className="contact-card">
               <div className="contact-info">
                 <div className="section-topline light">
-                  <span>05</span>
+                  <span></span>
                   <span>Contato</span>
                 </div>
 

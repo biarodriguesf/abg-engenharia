@@ -4607,3 +4607,87 @@ body.menu-open .mobile-menu {
     transition: none !important;
   }
 }
+
+
+/* ANIMAÇÕES PREMIUM: limitadas às seções Serviços e Como funciona. */
+.services-section .section-heading > div,
+.services-section .section-heading > p,
+.process-section > .container > .section-topline,
+.process-section .process-heading > * {
+  transition-duration: 760ms;
+}
+
+.services-grid .service-card,
+.process-grid .process-card {
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 460ms cubic-bezier(.2, .75, .25, 1),
+    box-shadow 460ms cubic-bezier(.2, .75, .25, 1),
+    border-color 460ms ease,
+    filter 460ms ease;
+}
+
+.services-grid .service-card::before,
+.process-grid .process-card::before {
+  transition: opacity 420ms ease, transform 650ms cubic-bezier(.2, .75, .25, 1);
+}
+
+.services-grid .service-card:hover,
+.services-grid .service-card:focus-within {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow: 0 25px 52px rgba(7, 26, 46, .25), 0 0 0 1px rgba(112, 188, 231, .32);
+}
+
+.process-grid .process-card:hover,
+.process-grid .process-card:focus-within {
+  transform: translateY(-7px) scale(1.012);
+  box-shadow: 0 22px 46px rgba(10, 36, 61, .16), 0 0 0 1px rgba(112, 188, 231, .3);
+  border-color: rgba(112, 188, 231, .58);
+}
+
+.services-grid .service-card .service-number,
+.process-grid .process-card .process-number {
+  transition: color 350ms ease, transform 420ms cubic-bezier(.2, .75, .25, 1);
+}
+
+.services-grid .service-card:hover .service-number,
+.process-grid .process-card:hover .process-number {
+  transform: translateY(-2px);
+}
+
+.services-grid .service-card .service-icon,
+.process-grid .process-card .process-icon {
+  transition: transform 420ms cubic-bezier(.2, .75, .25, 1), filter 420ms ease;
+}
+
+.services-grid .service-card:hover .service-icon,
+.process-grid .process-card:hover .process-icon {
+  transform: translateY(-3px) scale(1.08);
+  filter: drop-shadow(0 6px 12px rgba(112, 188, 231, .28));
+}
+
+@media (hover: none) {
+  .services-grid .service-card:hover,
+  .services-grid .service-card:focus-within,
+  .process-grid .process-card:hover,
+  .process-grid .process-card:focus-within {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-section .section-heading > div,
+  .services-section .section-heading > p,
+  .process-section > .container > .section-topline,
+  .process-section .process-heading > *,
+  .services-grid .service-card,
+  .process-grid .process-card,
+  .services-grid .service-card .service-icon,
+  .process-grid .process-card .process-icon,
+  .services-grid .service-card .service-number,
+  .process-grid .process-card .process-number {
+    transition: none !important;
+    animation: none !important;
+  }
+}
